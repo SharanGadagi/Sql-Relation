@@ -1,0 +1,1296 @@
+{
+    "swagger": "2.0.0",
+    "info": {
+        "title": "Sequelize Orm Api's",
+        "version": "0.1.9",
+        "description": "This is Sequelize Orm Api's documentation "
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Student",
+            "description": "Student All Routes"
+        },
+        {
+            "name": "Standard",
+            "description": "Standards All Routes"
+        },
+        {
+            "name": "Subject Marks",
+            "description": "Subject Marks All Routes"
+        },
+        {
+            "name": "Teacher",
+            "description": "Teacher  All Routes"
+        }
+    ],
+    "paths": {
+        "/student": {
+            "post": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Create Student",
+                "description": "Create Student",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Student object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "address": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "mobile": {
+                                    "type": "number",
+                                    "required": "true"
+                                },
+                                "active": {
+                                    "type": "boolean",
+                                    "required": "true"
+                                },
+                                "stdId": {
+                                    "type": "string",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/all": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get all the Students",
+                "description": "Get all the students",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/single/{id}": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get particular all the students",
+                "description": "Get particular student",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular Student details",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/update/{id}": {
+            "put": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Update the Student",
+                "description": "Update the Student",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Student id that needs to be update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "student object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "address": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "mobile": {
+                                    "type": "number",
+                                    "required": "true"
+                                },
+                                "active": {
+                                    "type": "boolean",
+                                    "required": "true"
+                                },
+                                "stdId": {
+                                    "type": "string",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Delete the student",
+                "description": "Delete the student",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "student id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                    
+                     
+    
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/studentAndStd": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get all students in which standard",
+                "description": "Get all students in which standard",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Get all students in which standard",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/studentAndStd/{id}": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get particular student in which standard",
+                "description": "Get particular student in which standard",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "get particular student",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/StudentsAndSubjects": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get all students all subjects marks",
+                "description": "get all students all subjects marks",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/student/singleStudentAndSubjects/{id}": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get particular student all subject marks",
+                "description": "Get particular student all subject marks",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Get particular student all subject marks",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard": {
+            "post": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Create Standard ",
+                "description": "Create Standard",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Student object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "active": {
+                                    "type": "boolean",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/all": {
+            "get": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Get all the Standard",
+                "description": "Get all the Standard",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/single/{id}": {
+            "get": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Get particular  standard",
+                "description": "Get particular  standard",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular standard details",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/update/{id}": {
+            "put": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Update the Standard",
+                "description": "Update the Standard",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Standard id that needs to be update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Standard object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "active": {
+                                    "type": "boolean",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Delete the Standard",
+                "description": "Delete the Standard",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Standard id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/stdstAndStudents": {
+            "get": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Get all the Standards with students",
+                "description": "Get all the Standards with students",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/singlestdAndStudent/{id}": {
+            "get": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Get particular  Standard with students",
+                "description": "Get particular  Standard with students",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular Standard with students",
+                        "type": "string",
+                        "required": "true"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/stdsAndTeachers": {
+            "get": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Get all the Standards with students",
+                "description": "Get all the Standards with students",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/standard/singleStdAndTeacher/{id}": {
+            "get": {
+                "tags": [
+                    "Standard"
+                ],
+                "summary": "Get particular  Standard with teachers",
+                "description": "Get particular  Standard with teachers",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular Standard with teachers",
+                        "type": "string",
+                        "required": "true"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/subjectMarks": {
+            "post": {
+                "tags": [
+                    "Subject Marks"
+                ],
+                "summary": "Create Subject Marks ",
+                "description": "Create Subject Marks",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Subject Marks object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstSubject": {
+                                    "type": "number"
+                                },
+                                "secondSubject": {
+                                    "type": "number"
+                                },
+                                "thirdSubject": {
+                                    "type": "number"
+                                },
+                                "fourthSubject": {
+                                    "type": "number"
+                                },
+                                "totalMarks": {
+                                    "type": "number"
+                                },
+                                "studentId": {
+                                    "type": "string",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/subjectMarks/all": {
+            "get": {
+                "tags": [
+                    "Subject Marks"
+                ],
+                "summary": "Get all the Subject Marks",
+                "description": "Get all the Subject Marks",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/subjectMarks/single/{id}": {
+            "get": {
+                "tags": [
+                    "Subject Marks"
+                ],
+                "summary": "Get particular  Subject Marks",
+                "description": "Get particular  Subject Marks",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular Subject Marks details",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/subjectMarks/update/{id}": {
+            "put": {
+                "tags": [
+                    "Subject Marks"
+                ],
+                "summary": "Update the Subject Marks",
+                "description": "Update the Subject Marks",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subject Marks id that needs to be update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Standard object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstSubject": {
+                                    "type": "number"
+                                },
+                                "secondSubject": {
+                                    "type": "number"
+                                },
+                                "thirdSubject": {
+                                    "type": "number"
+                                },
+                                "fourthSubject": {
+                                    "type": "number"
+                                },
+                                "totalMarks": {
+                                    "type": "number"
+                                },
+                                "studentId": {
+                                    "type": "string",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/subjectMarks/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Subject Marks"
+                ],
+                "summary": "Delete the Subject Marks",
+                "description": "Delete the Subject Marks",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subject Marks id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/subjectMarks/subjectsAndStudents": {
+            "get": {
+                "tags": [
+                    "Subject Marks"
+                ],
+                "summary": "Get all the Subject Marks with students",
+                "description": "Get all the Subject Marks with students",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/subjectMarks/singleSubjectAndStudents/{id}": {
+            "get": {
+                "tags": [
+                    "Subject Marks"
+                ],
+                "summary": "Get particular  Subject Marks with students",
+                "description": "Get particular  Subject Marks with students",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular Get particular  Subject Marks with students details",
+                        "type": "string",
+                        "required": "true"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/teacher": {
+            "post": {
+                "tags": [
+                    "Teacher"
+                ],
+                "summary": "Teacher Student",
+                "description": "Teacher Student",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Teacher object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "address": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "mobile": {
+                                    "type": "number",
+                                    "required": "true"
+                                },
+                                "stdId": {
+                                    "type": "string",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/teacher/all": {
+            "get": {
+                "tags": [
+                    "Teacher"
+                ],
+                "summary": "Get all the Teachers",
+                "description": "Get all the Teachers",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/teacher/single/{id}": {
+            "get": {
+                "tags": [
+                    "Teacher"
+                ],
+                "summary": "Get particular all the Teacher",
+                "description": "Get particular Teacher",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular Teacher details",
+                        "type": "string",
+                        "required": "true"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/teacher/update/{id}": {
+            "put": {
+                "tags": [
+                    "Teacher"
+                ],
+                "summary": "Update the Teacher",
+                "description": "Update the Teacher",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Teacher id that needs to be update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "student object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "address": {
+                                    "type": "string",
+                                    "required": "true"
+                                },
+                                "mobile": {
+                                    "type": "number",
+                                    "required": "true"
+                                },
+                                "stdId": {
+                                    "type": "string",
+                                    "required": "true"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/teacher/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Teacher"
+                ],
+                "summary": "Delete the Teacher",
+                "description": "Delete the Teacher",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Teacher id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/teacher/teachersAndStds": {
+            "get": {
+                "tags": [
+                    "Teacher"
+                ],
+                "summary": "Get all the Teachers with Standard",
+                "description": "Get all the Teachers with Standard",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        },
+        "/teacher/singleTeachersAndStd/{id}": {
+            "get": {
+                "tags": [
+                    "Teacher"
+                ],
+                "summary": "Get particular all the Teacher with Standard",
+                "description": "Get particular all the Teacher with Standard",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": " id that needs to be see the particular Teacher with Standard",
+                        "type": "string",
+                        "required": "true"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": " Invalid status value"
+                    }
+                }
+            }
+        }
+    }
+}
